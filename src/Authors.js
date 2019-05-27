@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, PageHeader, Layout, Input, Button } from "antd";
+import { Row, Col, PageHeader, Layout, Input, Button, List } from "antd";
 import axios from "axios";
 import "./App.css";
 
@@ -37,9 +37,10 @@ class Authors extends Component {
     for (let i = 0; i < list.length; i++) {
       authors.push({ name: list[i] });
     }
-    console.log(authors);
     const listItems = authors.map(author => (
-      <li key={author.name}>{author.name}</li>
+      <List style={{ fontSize: "19px" }} key={author.name}>
+        {author.name}
+      </List>
     ));
     this.setState({
       author: listItems
@@ -53,7 +54,7 @@ class Authors extends Component {
       <div>
         <PageHeader style={{ textAlign: "center" }} title="Author Searcher" />
         <Content>
-          <Row gutter={50}>
+          <Row style={{ marginBottom: 28 }} gutter={50}>
             <Col span={8} />
             <Col span={5}>
               <Input
